@@ -3,8 +3,11 @@ import express, { Request, Response } from 'express';
 import { createExpressServer, useContainer } from 'routing-controllers';
 import { UserController } from './modules/users/user.controller';
 import Container from 'typedi';
+import { connectMySQL } from './db/sql.config';
 
 const port = 3000;
+
+connectMySQL()
 
 useContainer(Container);
 const app = createExpressServer({
@@ -12,7 +15,7 @@ const app = createExpressServer({
 });
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, TypeScript + Node.js + Express!');
+    res.send('Namaste, Server is working fine 😉');
 });
 
 app.listen(port, () => {
