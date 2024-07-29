@@ -4,6 +4,7 @@ import { createExpressServer, useContainer } from 'routing-controllers';
 import { UserController } from './modules/users/user.controller';
 import Container from 'typedi';
 import { connectMySQL } from './db/sql.config';
+import { StudentController } from './modules/student/student.controller';
 
 const port = 3000;
 
@@ -11,7 +12,7 @@ connectMySQL()
 
 useContainer(Container);
 const app = createExpressServer({
-    controllers: [UserController],
+    controllers: [StudentController],
 });
 
 app.get('/', (req: Request, res: Response) => {

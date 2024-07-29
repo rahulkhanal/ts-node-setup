@@ -7,6 +7,8 @@ const AppDataSource = new DataSource({
     username: "root",
     password: "",
     database: "test",
+    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+    synchronize: true, 
 })
 
 export function connectMySQL() {
@@ -15,6 +17,6 @@ export function connectMySQL() {
             console.log("Data Source has been initialized!")
         })
         .catch((err) => {
-            console.error("Error during Data Source initialization:", err.sqlMessage) 
+            console.error("Error during Data Source initialization:", err.sqlMessage)
         })
 }
